@@ -11,7 +11,7 @@ public class Gem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !hasTriggered)
+        if((other.CompareTag("Player") || other.CompareTag("Sparx")) && !hasTriggered)
         {
             hasTriggered = true;
             firstPos = transform.position;
@@ -20,7 +20,7 @@ public class Gem : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Player"))
+        if(collision.collider.CompareTag("Player") || collision.collider.CompareTag("Sparx"))
         {
             hasTriggered = false;
             Destroy(gameObject);

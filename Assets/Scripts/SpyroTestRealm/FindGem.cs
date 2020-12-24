@@ -6,26 +6,32 @@ public class FindGem : MonoBehaviour
 {
     public float lookRadius = 10f;
 
-    Transform target;
+    public GameObject target;
     public bool isNear = false;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
-        target = GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Gem");
+        distance = Vector3.Distance(target.transform.position, transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
+        distance = Vector3.Distance(target.transform.position, transform.position);
 
         if(distance <= lookRadius)
         {
             isNear = true;
         }
+        else
+        {
+            isNear = false;
+        }
     }
 
-    public Transform nearThisGem()
+    public GameObject nearThisGem()
     {
         return target;
     }
